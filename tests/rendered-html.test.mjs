@@ -32,8 +32,10 @@ test("server-renders the finished My Hebrew Story landing page", async () => {
   assert.match(html, /Learn Hebrew by living a story\./);
   assert.match(html, /36 voiced lessons/);
   assert.match(html, /href="#home"[^>]*>Home<\/a>/);
-  assert.match(html, /href="#contact"[^>]*>Contact<\/a>/);
+  assert.match(html, />Contact<\/button>/);
   assert.match(html, /href="#download"[^>]*>Download Now<\/a>/);
+  assert.match(html, /https:\/\/tally\.so\/widgets\/embed\.js/);
+  assert.match(html, /Send us an inquiry/);
   assert.match(html, /hello@myhebrewstory\.com/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
 });

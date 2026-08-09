@@ -1,3 +1,5 @@
+import { TallyPopupButton } from "./TallyPopupButton";
+
 const featurePanels = [
   {
     number: "01",
@@ -42,7 +44,7 @@ export default function Home() {
         </a>
         <nav aria-label="Primary navigation">
           <a href="#home">Home</a>
-          <a href="#contact">Contact</a>
+          <TallyPopupButton>Contact</TallyPopupButton>
           <a className="nav-download" href="#download">Download Now</a>
         </nav>
       </header>
@@ -180,7 +182,7 @@ export default function Home() {
         </div>
         <div className="contact-copy">
           <p>Questions, ideas, or just want to say <span lang="he" dir="rtl">שָׁלוֹם</span>?</p>
-          <a href="mailto:hello@myhebrewstory.com">hello@myhebrewstory.com</a>
+          <TallyPopupButton className="contact-link">Send us an inquiry</TallyPopupButton>
         </div>
       </section>
 

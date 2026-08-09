@@ -29,6 +29,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <script src="https://tally.so/widgets/embed.js" defer />
+      </head>
       <body>{children}</body>
     </html>
   );

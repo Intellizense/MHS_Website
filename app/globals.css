@@ -123,13 +123,26 @@ nav {
   font-weight: 500;
 }
 
-nav a {
+nav a,
+nav button {
   transition: color 180ms ease, transform 180ms ease;
 }
 
 nav a:hover,
-nav a:focus-visible {
+nav a:focus-visible,
+nav button:hover,
+nav button:focus-visible {
   color: var(--terracotta);
+}
+
+nav button,
+.contact-link {
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
 }
 
 .nav-download {
@@ -646,7 +659,7 @@ h1 {
   font-size: 14px;
 }
 
-.contact-copy a {
+.contact-copy .contact-link {
   display: inline-block;
   padding-bottom: 4px;
   color: var(--terracotta);
