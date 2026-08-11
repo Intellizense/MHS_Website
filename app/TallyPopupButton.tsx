@@ -2,8 +2,6 @@
 
 import type { ReactNode } from "react";
 
-const TALLY_FORM_ID = "gDVB14";
-
 type TallyPopupOptions = {
   layout?: "default" | "modal";
   width?: number;
@@ -21,12 +19,13 @@ declare global {
 type TallyPopupButtonProps = {
   children: ReactNode;
   className?: string;
+  formId: string;
 };
 
-export function TallyPopupButton({ children, className }: TallyPopupButtonProps) {
-  const openInquiryForm = () => {
+export function TallyPopupButton({ children, className, formId }: TallyPopupButtonProps) {
+  const openForm = () => {
     if (window.Tally?.openPopup) {
-      window.Tally.openPopup(TALLY_FORM_ID, {
+      window.Tally.openPopup(formId, {
         layout: "modal",
         width: 700,
         autoClose: 5000,
@@ -35,14 +34,14 @@ export function TallyPopupButton({ children, className }: TallyPopupButtonProps)
     }
 
     window.open(
-      `https://tally.so/r/${TALLY_FORM_ID}`,
+      `https://tally.so/r/${formId}`,
       "_blank",
       "noopener,noreferrer",
     );
   };
 
   return (
-    <button type="button" className={className} onClick={openInquiryForm}>
+    <button type="button" className={className} onClick={openForm}>
       {children}
     </button>
   );

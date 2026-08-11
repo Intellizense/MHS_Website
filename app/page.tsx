@@ -1,37 +1,69 @@
 import { TallyPopupButton } from "./TallyPopupButton";
+import { FeaturesShowcase } from "./FeaturesShowcase";
 
-const featurePanels = [
-  {
-    number: "01",
-    eyebrow: "SPEAK INSIDE THE STORY",
-    title: "Know exactly what to say.",
-    body: "Step into guided scenes from real life—the café, the shuk, the clinic. Answer naturally and keep the conversation moving.",
-    image: "/assets/app-speaking.jpg",
-    alt: "My Hebrew Story guided speaking practice at a Tel Aviv café",
-  },
-  {
-    number: "02",
-    eyebrow: "HEBREW FOR YOU",
-    title: "Every ending fits who you are.",
-    body: "Choose Ron or Gal as your protagonist. The language changes with your story, so gendered Hebrew feels personal from the first lesson.",
-    image: "/assets/app-gendered.jpg",
-    alt: "Comparison of masculine and feminine Hebrew storylines in the app",
-  },
-  {
-    number: "03",
-    eyebrow: "MORE THAN WORDS",
-    title: "Understand Israel, not just Hebrew.",
-    body: "Meet grammar and culture where they matter—in the dialogue you just heard, the neighborhood you are exploring, and the life you are building.",
-    image: "/assets/app-culture.jpg",
-    alt: "Culture lesson about Yom Kippur inside My Hebrew Story",
-  },
+const INQUIRY_FORM_ID = "gDVB14";
+const WAITLIST_FORM_ID = "D4Opkj";
+
+const courseStats = [
+  ["36", "lessons"],
+  ["8", "chapters"],
+  ["1", "year in Israel"],
 ];
 
+function CourseProof({ className }: { className: string }) {
+  return (
+    <dl className={`proof-row ${className}`} aria-label="Course overview">
+      {courseStats.map(([value, label]) => (
+        <div key={label}>
+          <dt>{value}</dt>
+          <dd>{label}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 const chapters = [
-  ["01", "Arrival", "A new apartment, a new neighbor, and your first words in Tel Aviv."],
-  ["02", "Belonging", "Shabbat dinners, market mornings, and the people who begin to feel like family."],
-  ["03", "Becoming local", "Work, ulpan, holidays, paperwork, and the small victories of everyday life."],
-  ["04", "Full circle", "One year, thirty-six lessons, and a question that changes the meaning of everything."],
+  [
+    "01",
+    "A New Life in Tel Aviv",
+    "Meet new neighbors, find the café, and begin talking about work and everyday life.",
+  ],
+  [
+    "02",
+    "Shabbat with a New Family",
+    "Shop the shuk, buy challah, meet the family, share Shabbat dinner, and slow down by the sea.",
+  ],
+  [
+    "03",
+    "Finding Your Rhythm",
+    "Return to ulpan, visit a startup, eat out, and learn to tell the stories of your week and weekend.",
+  ],
+  [
+    "04",
+    "The Jerusalem Adventure",
+    "Plan a weekend away, navigate the Old City, and pause at the Western Wall.",
+  ],
+  [
+    "05",
+    "Becoming a Local",
+    "Celebrate the New Year and Yom Kippur, ride the bus, meet the first rain, and cook shakshuka.",
+  ],
+  [
+    "06",
+    "North of Tel Aviv",
+    "Rent a car, discover kibbutz roots, and solve a booking mix-up on a northern road trip.",
+  ],
+  [
+    "07",
+    "Building a Life in Israel",
+    "Visit the doctor, celebrate Hanukkah and a bar mitzvah, tackle paperwork, find an apartment, and interview for a job.",
+  ],
+  [
+    "08",
+    "A Year Comes Full Circle",
+    "Celebrate Purim and Seder night—one year after arriving, surrounded by friends and family.",
+  ],
 ];
 
 export default function Home() {
@@ -44,8 +76,10 @@ export default function Home() {
         </a>
         <nav aria-label="Primary navigation">
           <a href="#home">Home</a>
-          <TallyPopupButton>Contact</TallyPopupButton>
-          <a className="nav-download" href="#download">Download Now</a>
+          <TallyPopupButton formId={INQUIRY_FORM_ID}>Contact</TallyPopupButton>
+          <TallyPopupButton className="nav-download" formId={WAITLIST_FORM_ID}>
+            Join Wait List
+          </TallyPopupButton>
         </nav>
       </header>
 
@@ -58,85 +92,64 @@ export default function Home() {
             36 voiced lessons—without streaks, drills, or getting stuck.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#download">Download Now</a>
-            <span>Coming soon to iOS &amp; Android</span>
+            <TallyPopupButton className="button button-primary" formId={WAITLIST_FORM_ID}>
+              Join Wait List
+            </TallyPopupButton>
+            <div className="hero-store-status" aria-label="Coming soon to the App Store and Google Play">
+              <span className="coming-soon">Coming soon</span>
+              <div className="hero-store-badges" aria-hidden="true">
+                <span className="hero-store-badge">
+                  <span className="store-mark apple-mark"></span>
+                  <span><small>Download on the</small>App Store</span>
+                </span>
+                <span className="hero-store-badge">
+                  <span className="store-mark play-mark">▶</span>
+                  <span><small>Get it on</small>Google Play</span>
+                </span>
+              </div>
+            </div>
           </div>
-          <dl className="proof-row" aria-label="Course overview">
-            <div><dt>36</dt><dd>lessons</dd></div>
-            <div><dt>8</dt><dd>chapters</dd></div>
-            <div><dt>1</dt><dd>year in Israel</dd></div>
-          </dl>
+          <CourseProof className="proof-row-desktop" />
         </div>
 
         <div className="hero-visual" aria-label="Ron and Gal overlooking Tel Aviv beach">
           <img src="/assets/hero-arrival.jpg" alt="Ron and Gal speaking above the Tel Aviv beach in a watercolor illustration" />
-          <div className="word-card">
-            <span className="hebrew" lang="he" dir="rtl">חֲבֵרָה</span>
-            <span>friend · girlfriend</span>
-          </div>
           <div className="story-stamp" aria-hidden="true">
             <strong>YOU</strong>
             <span>are the<br />main character</span>
           </div>
         </div>
+        <CourseProof className="proof-row-mobile" />
       </section>
 
       <section className="manifesto section-shell" aria-labelledby="manifesto-title">
-        <div>
+        <div className="manifesto-heading">
           <p className="eyebrow">THE HEBREW COURSE FOR STORY PEOPLE</p>
           <h2 id="manifesto-title">A novel you don&apos;t just read. You live it.</h2>
         </div>
-        <p>
+        <p className="manifesto-copy">
           You arrive in Israel as the protagonist. Every lesson moves the plot
           forward through voiced dialogue, vocabulary, grammar, culture, and
           speaking practice. The story pulls you back—not a streak.
         </p>
+        <figure className="manifesto-art manifesto-art-gal">
+          <img
+            src="/assets/gal-arrival.jpg"
+            alt="Gal arriving on a sunlit Tel Aviv street with her suitcases"
+            loading="lazy"
+          />
+        </figure>
       </section>
 
-      <section className="features" aria-labelledby="features-title">
-        <div className="section-shell features-heading">
-          <p className="eyebrow">HOW YOU LEARN</p>
-          <h2 id="features-title">Private lesson depth.<br />Page-turner momentum.</h2>
-        </div>
-        <div className="feature-grid section-shell">
-          {featurePanels.map((feature) => (
-            <article className="feature-card" key={feature.number}>
-              <div className="panel-frame">
-                <img src={feature.image} alt={feature.alt} loading="lazy" />
-              </div>
-              <div className="feature-copy">
-                <span className="feature-number">{feature.number}</span>
-                <p className="eyebrow">{feature.eyebrow}</p>
-                <h3>{feature.title}</h3>
-                <p>{feature.body}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="hook section-shell" aria-labelledby="hook-title">
-        <div className="hook-word">
-          <span className="hebrew" lang="he" dir="rtl">חֲבֵרָה</span>
-          <div>
-            <span>friend</span>
-            <span>girlfriend</span>
-          </div>
-        </div>
-        <div className="hook-copy">
-          <p className="eyebrow">ONE WORD. TWO MEANINGS.</p>
-          <h2 id="hook-title">Grammar that carries the whole story.</h2>
-          <p>
-            The ambiguity begins in lesson one and follows you through a full
-            year in Israel. In My Hebrew Story, grammar isn&apos;t a rule to memorize.
-            It&apos;s what makes the plot move.
-          </p>
-        </div>
-      </section>
+      <FeaturesShowcase />
 
       <section className="journey" aria-labelledby="journey-title">
         <div className="journey-image">
-          <img src="/assets/tel-aviv.jpg" alt="Gal arriving with suitcases on a sunny Tel Aviv street" loading="lazy" />
+          <img
+            src="/assets/last-banner.jpg"
+            alt="Ron and Gal exploring Jerusalem with friends"
+            loading="lazy"
+          />
         </div>
         <div className="journey-content section-shell">
           <div className="journey-heading">
@@ -155,34 +168,27 @@ export default function Home() {
       </section>
 
       <section className="download section-shell" id="download" aria-labelledby="download-title">
-        <div className="download-art" aria-hidden="true">
-          <img src="/assets/app-journey.jpg" alt="" loading="lazy" />
+        <div className="download-art">
+          <img
+            src="/assets/chapter5-ron.jpg"
+            alt="My Hebrew Story journey screen showing Ron’s Becoming a Local chapter"
+            loading="lazy"
+          />
         </div>
         <div className="download-copy">
           <p className="eyebrow">YOUR STORY STARTS SOON</p>
           <h2 id="download-title">Ready for your first chapter?</h2>
           <p>
             My Hebrew Story is preparing to launch on iPhone and Android.
-            Write to us and we&apos;ll let you know the moment it&apos;s ready.
+            Join the waitlist and we&apos;ll let you know the moment it&apos;s ready.
           </p>
           <div className="store-row" aria-label="Planned app availability">
             <span className="store-badge"><small>Coming soon to the</small>App Store</span>
             <span className="store-badge"><small>Coming soon on</small>Google Play</span>
           </div>
-          <a className="button button-light" href="mailto:hello@myhebrewstory.com?subject=Tell%20me%20when%20My%20Hebrew%20Story%20launches">
-            Tell me when it launches
-          </a>
-        </div>
-      </section>
-
-      <section className="contact section-shell" id="contact" aria-labelledby="contact-title">
-        <div>
-          <p className="eyebrow">CONTACT</p>
-          <h2 id="contact-title">Let&apos;s talk Hebrew.</h2>
-        </div>
-        <div className="contact-copy">
-          <p>Questions, ideas, or just want to say <span lang="he" dir="rtl">שָׁלוֹם</span>?</p>
-          <TallyPopupButton className="contact-link">Send us an inquiry</TallyPopupButton>
+          <TallyPopupButton className="button button-light" formId={WAITLIST_FORM_ID}>
+            Join Wait List
+          </TallyPopupButton>
         </div>
       </section>
 
