@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function render() {
@@ -72,4 +73,21 @@ test("server-renders the finished My Hebrew Story landing page", async () => {
   assert.doesNotMatch(html, /Let&apos;s talk Hebrew|Let&#x27;s talk Hebrew|Send us an inquiry/);
   assert.doesNotMatch(html, /Download Now|word-card/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
+});
+
+test("exports a complete GitHub Pages website", async () => {
+  const html = await readFile(
+    new URL("../dist/github-pages/index.html", import.meta.url),
+    "utf8",
+  );
+  const cname = await readFile(
+    new URL("../dist/github-pages/CNAME", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(html, /<title>My Hebrew Story — Learn Hebrew by Living a Story<\/title>/i);
+  assert.match(html, /\/_next\/static\/css\//);
+  assert.match(html, /\/_next\/static\/chunks\//);
+  assert.match(html, /https:\/\/tally\.so\/widgets\/embed\.js/);
+  assert.equal(cname.trim(), "myhebrewstory.com");
 });
