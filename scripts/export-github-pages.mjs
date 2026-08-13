@@ -1,5 +1,5 @@
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
-import { extname, resolve, sep } from "node:path";
+import { dirname, extname, resolve, sep } from "node:path";
 import { pathToFileURL } from "node:url";
 
 const root = process.cwd();
@@ -52,22 +52,43 @@ await cp(clientDirectory, outputDirectory, { recursive: true });
 const serverUrl = pathToFileURL(serverEntry);
 serverUrl.searchParams.set("static-export", `${Date.now()}`);
 const { default: worker } = await import(serverUrl.href);
-const response = await worker.fetch(
-  new Request(siteUrl, { headers: { accept: "text/html" } }),
-  { ASSETS: { fetch: fetchAsset } },
-  { waitUntil() {}, passThroughOnException() {} },
-);
+const routes = [
+  {
+    pathname: "/",
+    output: "index.html",
+    expectedText: "Learn Hebrew by living a story.",
+  },
+  {
+    pathname: "/privacy",
+    output: "privacy/index.html",
+    expectedText: "Privacy Policy",
+  },
+];
 
-if (!response.ok) {
-  throw new Error(`Static render failed with status ${response.status}.`);
+for (const route of routes) {
+  const response = await worker.fetch(
+    new Request(new URL(route.pathname, siteUrl), {
+      headers: { accept: "text/html" },
+    }),
+    { ASSETS: { fetch: fetchAsset } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+
+  if (!response.ok) {
+    throw new Error(
+      `Static render for ${route.pathname} failed with status ${response.status}.`,
+    );
+  }
+
+  const html = await response.text();
+  if (!html.includes(route.expectedText) || !html.includes("/_next/static/")) {
+    throw new Error(`Static render for ${route.pathname} is incomplete.`);
+  }
+
+  const outputPath = resolve(outputDirectory, route.output);
+  await mkdir(dirname(outputPath), { recursive: true });
+  await writeFile(outputPath, html);
 }
-
-const html = await response.text();
-if (!html.includes("Learn Hebrew by living a story.") || !html.includes("/_next/static/")) {
-  throw new Error("Static render is missing the landing page or its client assets.");
-}
-
-await writeFile(resolve(outputDirectory, "index.html"), html);
 await writeFile(
   resolve(outputDirectory, "CNAME"),
   `${new URL(siteUrl).hostname}\n`,

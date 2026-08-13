@@ -197,7 +197,10 @@ export default function Home() {
           <img src="/favicon.png" alt="" width="40" height="40" />
           <span>My Hebrew Story</span>
         </a>
-        <p>© 2026 My Hebrew Story. Learn Hebrew by living a story.</p>
+        <div className="footer-meta">
+          <p>© 2026 My Hebrew Story. Learn Hebrew by living a story.</p>
+          <a href="/privacy/">Privacy Policy</a>
+        </div>
       </footer>
     </main>
   );

@@ -73,6 +73,7 @@ test("server-renders the finished My Hebrew Story landing page", async () => {
   assert.doesNotMatch(html, /Let&apos;s talk Hebrew|Let&#x27;s talk Hebrew|Send us an inquiry/);
   assert.doesNotMatch(html, /Download Now|word-card/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
+  assert.match(html, /href="\/privacy\/"[^>]*>Privacy Policy<\/a>/);
 });
 
 test("exports a complete GitHub Pages website", async () => {
@@ -90,4 +91,23 @@ test("exports a complete GitHub Pages website", async () => {
   assert.match(html, /\/_next\/static\/chunks\//);
   assert.match(html, /https:\/\/tally\.so\/widgets\/embed\.js/);
   assert.equal(cname.trim(), "myhebrewstory.com");
+});
+
+test("exports the complete privacy policy for App Store review", async () => {
+  const html = await readFile(
+    new URL("../dist/github-pages/privacy/index.html", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(html, /<title>Privacy Policy — My Hebrew Story<\/title>/i);
+  assert.match(html, /Effective August 13, 2026/);
+  assert.match(html, /Usage analytics/);
+  assert.match(html, /Country or general geographic region/);
+  assert.match(html, /Speech recognition/);
+  assert.match(html, /processed transiently/);
+  assert.match(html, /remains locally on your device/);
+  assert.match(html, /Service providers/);
+  assert.match(html, /Retention and deletion/);
+  assert.match(html, /Contact My Hebrew Story/);
+  assert.doesNotMatch(html, /Soniox/i);
 });
