@@ -105,9 +105,15 @@ test("exports the complete privacy policy for App Store review", async () => {
   assert.match(html, /Country or general geographic region/);
   assert.match(html, /Speech recognition/);
   assert.match(html, /processed transiently/);
-  assert.match(html, /remains locally on your device/);
+  assert.match(html, /temporarily uploaded/);
+  assert.match(html, /deleted promptly after processing/);
+  assert.match(html, /temporary batch fallback/);
   assert.match(html, /Service providers/);
   assert.match(html, /Retention and deletion/);
   assert.match(html, /Contact My Hebrew Story/);
+  assert.doesNotMatch(
+    html,
+    /is not stored on our servers or by our speech-recognition service provider/,
+  );
   assert.doesNotMatch(html, /Soniox/i);
 });

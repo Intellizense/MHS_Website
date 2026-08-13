@@ -31,8 +31,8 @@ export default function PrivacyPolicy() {
             My Hebrew Story does not require an account and does not
             intentionally collect direct personal identifiers. We collect only
             limited, de-identified usage analytics to improve the experience,
-            while speaking audio is processed transiently for real-time speech
-            recognition.
+            while speaking audio is processed for speech recognition and may be
+            temporarily uploaded when real-time processing is unavailable.
           </p>
         </header>
 
@@ -85,19 +85,28 @@ export default function PrivacyPolicy() {
             <p>
               My Hebrew Story includes optional speaking exercises. When you use
               a speaking exercise, microphone audio is transmitted securely to a
-              third-party speech-recognition service for real-time transcription.
+              third-party speech-recognition service for transcription.
             </p>
             <p>
-              The audio is processed only to convert your speech into text and
-              provide feedback within the exercise. It is processed transiently
-              and is not stored on our servers or by our speech-recognition
-              service provider. It is not used for advertising, user profiling,
-              or training artificial-intelligence models.
+              Where available, audio is processed transiently through real-time
+              speech recognition. If real-time transcription is unavailable or
+              interrupted, the recording may be temporarily uploaded to our
+              server and our speech-recognition service provider for batch
+              transcription. Temporary audio files and transcripts created for
+              this fallback are deleted promptly after processing.
             </p>
             <p>
-              Any recording saved by the app remains locally on your device. We
-              do not receive or store a copy. You can remove locally stored
-              recordings through the app or by deleting the app.
+              Audio and transcripts are used only to convert your speech into
+              text and provide feedback within the exercise. They are not used
+              for advertising, user profiling, or training
+              artificial-intelligence models.
+            </p>
+            <p>
+              Any recording saved by the app remains locally on your device
+              unless the temporary batch fallback described above is required.
+              Outside that limited processing, we do not retain a server copy.
+              You can remove locally stored recordings through the app or by
+              deleting the app.
             </p>
             <p>
               Our speech-recognition service provider may retain limited,
@@ -153,11 +162,13 @@ export default function PrivacyPolicy() {
               an individual may be retained for longer.
             </p>
             <p>
-              Real-time speaking audio is not retained off-device. Locally stored
-              information remains until you delete it or remove the app. Messages
-              you voluntarily send through our inquiry form may be retained for
-              as long as necessary to respond and maintain appropriate business
-              records.
+              Audio processed through the real-time path is not retained
+              off-device. If the temporary batch fallback is used, uploaded audio
+              and the resulting transcript are deleted promptly after
+              transcription and evaluation. Locally stored information remains
+              until you delete it or remove the app. Messages you voluntarily
+              send through our inquiry form may be retained for as long as
+              necessary to respond and maintain appropriate business records.
             </p>
           </section>
 
