@@ -40,6 +40,11 @@ test("server-renders the finished My Hebrew Story landing page", async () => {
     html,
     /https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-CGBSDC7EJK/,
   );
+  assert.match(html, /productionHosts\.includes\(window\.location\.hostname\)/);
+  assert.doesNotMatch(
+    html,
+    /<script[^>]+src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-CGBSDC7EJK"/,
+  );
   assert.match(html, /gtag\('config', 'G-CGBSDC7EJK'/);
   assert.match(html, /allow_google_signals: false/);
   assert.match(html, /allow_ad_personalization_signals: false/);
@@ -100,6 +105,11 @@ test("exports a complete GitHub Pages website", async () => {
   assert.match(
     html,
     /https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-CGBSDC7EJK/,
+  );
+  assert.match(html, /productionHosts\.includes\(window\.location\.hostname\)/);
+  assert.doesNotMatch(
+    html,
+    /<script[^>]+src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-CGBSDC7EJK"/,
   );
   assert.match(html, /gtag\('config', 'G-CGBSDC7EJK'/);
   assert.equal(cname.trim(), "myhebrewstory.com");
