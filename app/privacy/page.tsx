@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — My Hebrew Story",
   description:
-    "How My Hebrew Story handles usage analytics, speaking exercises, and information stored on your device.",
+    "How My Hebrew Story handles website and app analytics, speaking exercises, and information stored on your device.",
   alternates: {
     canonical: "https://myhebrewstory.com/privacy/",
   },
@@ -13,12 +14,12 @@ export default function PrivacyPolicy() {
   return (
     <main className="privacy-page">
       <header className="site-header privacy-header">
-        <a className="brand" href="/" aria-label="My Hebrew Story home">
+        <Link className="brand" href="/" aria-label="My Hebrew Story home">
           <img src="/favicon.png" alt="" width="44" height="44" />
           <span className="brand-name">My Hebrew Story</span>
-        </a>
+        </Link>
         <nav aria-label="Privacy page navigation">
-          <a href="/">Home</a>
+          <Link href="/">Home</Link>
         </nav>
       </header>
 
@@ -26,11 +27,11 @@ export default function PrivacyPolicy() {
         <header className="privacy-title">
           <p className="eyebrow">YOUR PRIVACY</p>
           <h1>Privacy Policy</h1>
-          <p className="privacy-effective">Effective August 13, 2026</p>
+          <p className="privacy-effective">Effective August 14, 2026</p>
           <p className="privacy-lead">
             My Hebrew Story does not require an account and does not
             intentionally collect direct personal identifiers. We collect only
-            limited, de-identified usage analytics to improve the experience,
+            limited, pseudonymous usage analytics to improve the experience,
             while speaking audio is processed for speech recognition and may be
             temporarily uploaded when real-time processing is unavailable.
           </p>
@@ -41,8 +42,8 @@ export default function PrivacyPolicy() {
             <h2 id="privacy-scope">1. Scope</h2>
             <p>
               This Privacy Policy explains how the My Hebrew Story mobile
-              application handles information. It also explains what happens
-              when you voluntarily contact us through our website.
+              application and website handle information, including when you
+              use the app, visit the website, or voluntarily contact us.
             </p>
           </section>
 
@@ -59,24 +60,34 @@ export default function PrivacyPolicy() {
           <section aria-labelledby="privacy-analytics">
             <h2 id="privacy-analytics">3. Usage analytics</h2>
             <p>
-              We collect limited information about how the app is used. This may
-              include:
+              We collect limited information about how the app and website are
+              used. Depending on which service you use, this may include:
             </p>
             <ul>
               <li>App launches and session duration</li>
               <li>Screens, lessons, or chapters opened</li>
               <li>Features and controls used</li>
-              <li>App version, operating-system version, and general device type</li>
+              <li>Website pages visited and general referral information</li>
+              <li>App version, browser, operating-system version, and general device type</li>
               <li>Country or general geographic region, without precise location information</li>
-              <li>General performance, reliability, and error information</li>
             </ul>
             <p>
-              We use this information only to understand how the app is used,
-              compare general usage patterns across device and operating-system
-              versions and countries, improve lessons and features, and identify
-              technical problems. It is not linked to an identified individual,
-              used for advertising, sold, or used to track your activity across
-              other companies’ apps or websites.
+              On the website, we use Google Analytics. Google Analytics uses a
+              first-party cookie named <code>_ga</code> containing a randomly
+              generated client identifier to distinguish browsers and sessions.
+              It also processes information such as pages visited, approximate
+              location, and browser and device information. Google Analytics may
+              use an IP address during collection to derive approximate location,
+              but GA4 does not log or store the IP address.
+            </p>
+            <p>
+              We use analytics only to understand general usage patterns,
+              improve lessons, features, and website content, and identify
+              technical problems. We do not intentionally associate analytics
+              identifiers with your name or email address. We have disabled
+              Google Signals and advertising-personalization signals for the
+              website tag. Analytics information is not sold or used by us to
+              track your activity across other companies’ apps or websites.
             </p>
           </section>
 
@@ -157,9 +168,11 @@ export default function PrivacyPolicy() {
             <p>
               We retain non-aggregated usage analytics only for as long as
               reasonably necessary to understand usage, maintain security, and
-              improve the app. We periodically delete or aggregate this
-              information. Aggregated statistics that cannot reasonably identify
-              an individual may be retained for longer.
+              improve the app and website. We periodically delete or aggregate
+              this information. Website analytics are retained according to our
+              Google Analytics retention settings and Google’s applicable
+              policies. Aggregated statistics that cannot reasonably identify an
+              individual may be retained for longer.
             </p>
             <p>
               Audio processed through the real-time path is not retained
@@ -176,11 +189,13 @@ export default function PrivacyPolicy() {
             <h2 id="privacy-choices">9. Your choices and rights</h2>
             <p>
               You can choose not to use the optional speaking exercises and can
-              delete locally stored recordings at any time. You may also contact
-              us with questions or requests concerning our privacy practices.
-              Because the app does not require an account and analytics are not
-              linked to an identified individual, we may be unable to locate
-              analytics associated with a particular person.
+              delete locally stored recordings at any time. You can control or
+              delete website cookies through your browser settings. You may also
+              contact us with questions or requests concerning our privacy
+              practices. Because the app does not require an account and we do
+              not intentionally associate analytics identifiers with your name
+              or email address, we may be unable to locate analytics associated
+              with a particular person.
             </p>
             <p>
               Depending on where you live, you may have additional rights under
@@ -249,10 +264,10 @@ export default function PrivacyPolicy() {
       </article>
 
       <footer className="site-footer section-shell privacy-footer">
-        <a className="brand" href="/" aria-label="My Hebrew Story home">
+        <Link className="brand" href="/" aria-label="My Hebrew Story home">
           <img src="/favicon.png" alt="" width="40" height="40" />
           <span>My Hebrew Story</span>
-        </a>
+        </Link>
         <div className="footer-meta">
           <p>© 2026 My Hebrew Story.</p>
           <a href="/privacy/" aria-current="page">Privacy Policy</a>

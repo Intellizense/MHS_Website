@@ -36,6 +36,13 @@ test("server-renders the finished My Hebrew Story landing page", async () => {
   assert.match(html, />Contact<\/button>/);
   assert.match(html, />Join Wait List<\/button>/);
   assert.match(html, /https:\/\/tally\.so\/widgets\/embed\.js/);
+  assert.match(
+    html,
+    /https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-CGBSDC7EJK/,
+  );
+  assert.match(html, /gtag\('config', 'G-CGBSDC7EJK'/);
+  assert.match(html, /allow_google_signals: false/);
+  assert.match(html, /allow_ad_personalization_signals: false/);
   assert.match(html, /Join the waitlist/);
   assert.match(html, /Download on the/);
   assert.match(html, /Google Play/);
@@ -90,6 +97,11 @@ test("exports a complete GitHub Pages website", async () => {
   assert.match(html, /\/_next\/static\/css\//);
   assert.match(html, /\/_next\/static\/chunks\//);
   assert.match(html, /https:\/\/tally\.so\/widgets\/embed\.js/);
+  assert.match(
+    html,
+    /https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-CGBSDC7EJK/,
+  );
+  assert.match(html, /gtag\('config', 'G-CGBSDC7EJK'/);
   assert.equal(cname.trim(), "myhebrewstory.com");
 });
 
@@ -100,8 +112,12 @@ test("exports the complete privacy policy for App Store review", async () => {
   );
 
   assert.match(html, /<title>Privacy Policy — My Hebrew Story<\/title>/i);
-  assert.match(html, /Effective August 13, 2026/);
+  assert.match(html, /Effective August 14, 2026/);
   assert.match(html, /Usage analytics/);
+  assert.match(html, /Google Analytics/);
+  assert.match(html, /first-party cookie named/);
+  assert.match(html, /GA4 does not log or store the IP address/);
+  assert.match(html, /Google Signals and advertising-personalization signals/);
   assert.match(html, /Country or general geographic region/);
   assert.match(html, /Speech recognition/);
   assert.match(html, /processed transiently/);

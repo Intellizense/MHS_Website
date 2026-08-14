@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const GOOGLE_ANALYTICS_ID = "G-CGBSDC7EJK";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://myhebrewstory.com"),
   title: "My Hebrew Story — Learn Hebrew by Living a Story",
@@ -31,6 +33,23 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <head>
         <script src="https://tally.so/widgets/embed.js" defer />
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GOOGLE_ANALYTICS_ID}', {
+                allow_google_signals: false,
+                allow_ad_personalization_signals: false
+              });
+            `,
+          }}
+        />
       </head>
       <body>{children}</body>
     </html>
