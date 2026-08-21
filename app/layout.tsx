@@ -5,17 +5,18 @@ const GOOGLE_ANALYTICS_ID = "G-CGBSDC7EJK";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://myhebrewstory.com"),
-  title: "My Hebrew Story — Learn Hebrew by Living a Story",
+  title: "My Hebrew Story — A Story-Driven Hebrew Learning App",
   description:
-    "A story-first Hebrew course with 36 voiced lessons, guided speaking practice, and a full year of life in Tel Aviv.",
+    "Learn to speak and understand Modern Hebrew through 36 voiced beginner lessons, guided speaking practice, and a year-long story set in Israel.",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "My Hebrew Story",
-    description: "Learn Hebrew by living a story.",
+    title: "My Hebrew Story — A Story-Driven Hebrew Learning App",
+    description:
+      "Learn to speak and understand Modern Hebrew through a story you live.",
     url: "https://myhebrewstory.com",
     siteName: "My Hebrew Story",
     locale: "en_US",
@@ -23,8 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "My Hebrew Story",
-    description: "Learn Hebrew by living a story.",
+    title: "My Hebrew Story — A Story-Driven Hebrew Learning App",
+    description:
+      "Learn to speak and understand Modern Hebrew through a story you live.",
   },
 };
 

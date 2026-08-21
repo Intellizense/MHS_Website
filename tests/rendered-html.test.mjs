@@ -29,9 +29,13 @@ test("server-renders the finished My Hebrew Story landing page", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>My Hebrew Story — Learn Hebrew by Living a Story<\/title>/i);
-  assert.match(html, /Learn Hebrew by living a story\./);
-  assert.match(html, /36 voiced lessons/);
+  assert.match(
+    html,
+    /<title>My Hebrew Story — A Story-Driven Hebrew Learning App<\/title>/i,
+  );
+  assert.match(html, /The Hebrew learning app where you live the story\./);
+  assert.match(html, /36 fully voiced beginner lessons/);
+  assert.match(html, /dialogue, vocabulary, grammar, Israeli culture/);
   assert.match(html, /href="#home"[^>]*>Home<\/a>/);
   assert.match(html, />Contact<\/button>/);
   assert.match(html, />Join Wait List<\/button>/);
@@ -55,7 +59,8 @@ test("server-renders the finished My Hebrew Story landing page", async () => {
   assert.match(html, /proof-row-mobile/);
   assert.match(html, /\/assets\/gal-arrival\.jpg/);
   assert.doesNotMatch(html, /\/assets\/ron-arrival\.jpg/);
-  assert.match(html, /Your story\. Your Hebrew\. Every step supported\./);
+  assert.match(html, /A complete beginner Hebrew course, built into a story\./);
+  assert.match(html, /Learn Hebrew in context—with support at every step\./);
   assert.match(html, /Know exactly what to say\./);
   assert.match(html, /Say it your way\./);
   assert.match(html, /Choose the Hebrew meant for you\./);
@@ -79,6 +84,12 @@ test("server-renders the finished My Hebrew Story landing page", async () => {
   assert.match(html, /North of Tel Aviv/);
   assert.match(html, /Building a Life in Israel/);
   assert.match(html, /A Year Comes Full Circle/);
+  assert.match(html, /What you(?:&#x27;|')ll learn, chapter by chapter\./);
+  assert.match(html, /Hebrew you(?:&#x27;|')ll learn:/);
+  assert.match(html, /Introduce yourself, ask simple questions/);
+  assert.match(html, /move from present Hebrew into the past tense/);
+  assert.match(html, /bring past, present, and future together/);
+  assert.match(html, /Ready to start speaking Hebrew\?/);
   assert.doesNotMatch(html, />Arrival<|>Belonging<|>Full circle</);
   assert.match(html, /\/assets\/chapter5-ron\.jpg/);
   assert.doesNotMatch(html, /\/assets\/app-journey\.jpg/);
@@ -98,7 +109,10 @@ test("exports a complete GitHub Pages website", async () => {
     "utf8",
   );
 
-  assert.match(html, /<title>My Hebrew Story — Learn Hebrew by Living a Story<\/title>/i);
+  assert.match(
+    html,
+    /<title>My Hebrew Story — A Story-Driven Hebrew Learning App<\/title>/i,
+  );
   assert.match(html, /\/_next\/static\/css\//);
   assert.match(html, /\/_next\/static\/chunks\//);
   assert.match(html, /https:\/\/tally\.so\/widgets\/embed\.js/);

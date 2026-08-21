@@ -5,8 +5,8 @@ const INQUIRY_FORM_ID = "gDVB14";
 const WAITLIST_FORM_ID = "D4Opkj";
 
 const courseStats = [
-  ["36", "lessons"],
-  ["8", "chapters"],
+  ["36", "Hebrew lessons"],
+  ["8", "story chapters"],
   ["1", "year in Israel"],
 ];
 
@@ -24,46 +24,62 @@ function CourseProof({ className }: { className: string }) {
 }
 
 const chapters = [
-  [
-    "01",
-    "A New Life in Tel Aviv",
-    "Meet new neighbors, find the café, and begin talking about work and everyday life.",
-  ],
-  [
-    "02",
-    "Shabbat with a New Family",
-    "Shop the shuk, buy challah, meet the family, share Shabbat dinner, and slow down by the sea.",
-  ],
-  [
-    "03",
-    "Finding Your Rhythm",
-    "Return to ulpan, visit a startup, eat out, and learn to tell the stories of your week and weekend.",
-  ],
-  [
-    "04",
-    "The Jerusalem Adventure",
-    "Plan a weekend away, navigate the Old City, and pause at the Western Wall.",
-  ],
-  [
-    "05",
-    "Becoming a Local",
-    "Celebrate the New Year and Yom Kippur, ride the bus, meet the first rain, and cook shakshuka.",
-  ],
-  [
-    "06",
-    "North of Tel Aviv",
-    "Rent a car, discover kibbutz roots, and solve a booking mix-up on a northern road trip.",
-  ],
-  [
-    "07",
-    "Building a Life in Israel",
-    "Visit the doctor, celebrate Hanukkah and a bar mitzvah, tackle paperwork, find an apartment, and interview for a job.",
-  ],
-  [
-    "08",
-    "A Year Comes Full Circle",
-    "Celebrate Purim and Seder night—one year after arriving, surrounded by friends and family.",
-  ],
+  {
+    number: "01",
+    title: "A New Life in Tel Aviv",
+    story: "Meet your neighbors, find the café, and talk about work and everyday life.",
+    learning:
+      "Introduce yourself, ask simple questions, use gendered nouns and adjectives, build present-tense sentences, and order at a café.",
+  },
+  {
+    number: "02",
+    title: "Shabbat with a New Family",
+    story: "Shop at the shuk, meet the family, share Shabbat dinner, and slow down by the sea.",
+    learning:
+      "Invite people, shop and ask prices, count in Hebrew, talk about family and possession, express what you like, and use essential question words.",
+  },
+  {
+    number: "03",
+    title: "Finding Your Rhythm",
+    story: "Return to ulpan, visit a startup, eat out, and tell stories from your week.",
+    learning:
+      "Use classroom survival phrases, tell time, make plans, order a meal, and move from present Hebrew into the past tense.",
+  },
+  {
+    number: "04",
+    title: "The Jerusalem Adventure",
+    story: "Plan a weekend away, navigate the Old City, and pause at the Western Wall.",
+    learning:
+      "Talk about the future, make suggestions, understand directions, say what you can do, use object pronouns, and express an opinion.",
+  },
+  {
+    number: "05",
+    title: "Becoming a Local",
+    story: "Celebrate the holidays, ride the bus, meet the first rain, and cook shakshuka.",
+    learning:
+      "Use holiday greetings, talk about frequency, navigate public transport, compare things, give instructions, and follow a Hebrew recipe.",
+  },
+  {
+    number: "06",
+    title: "North of Tel Aviv",
+    story: "Rent a car, discover kibbutz roots, and solve a hotel booking mix-up in northern Israel.",
+    learning:
+      "Handle car rental and travel rules, use larger numbers, describe what existed in the past, talk about what you had, and manage hotel check-in.",
+  },
+  {
+    number: "07",
+    title: "Building a Life in Israel",
+    story: "Visit the doctor, face paperwork, find an apartment, and interview for a job.",
+    learning:
+      "Describe symptoms, understand instructions and signs, form noun chains and relative clauses, and use future-tense Hebrew for real plans and interviews.",
+  },
+  {
+    number: "08",
+    title: "A Year Comes Full Circle",
+    story: "Celebrate Purim and Seder night—one year after arriving, surrounded by friends.",
+    learning:
+      "Use Hebrew for the holiday table, consolidate the major verb patterns, and bring past, present, and future together in your own story.",
+  },
 ];
 
 export default function Home() {
@@ -85,11 +101,12 @@ export default function Home() {
 
       <section className="hero section-shell" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <p className="eyebrow">A STORY-FIRST HEBREW COURSE</p>
-          <h1 id="hero-title">Learn Hebrew by living a story.</h1>
+          <p className="eyebrow">A STORY-DRIVEN HEBREW LEARNING APP</p>
+          <h1 id="hero-title">The Hebrew learning app where you live the story.</h1>
           <p className="hero-intro">
-            Move to Tel Aviv. Meet your neighbors. Build a life in Hebrew across
-            36 voiced lessons—without streaks, drills, or getting stuck.
+            Learn to speak and understand everyday Modern Hebrew through a year
+            in Tel Aviv. Follow 36 fully voiced beginner lessons with dialogue,
+            vocabulary, grammar, Israeli culture, and guided speaking practice.
           </p>
           <div className="hero-actions">
             <TallyPopupButton className="button button-primary" formId={WAITLIST_FORM_ID}>
@@ -124,13 +141,14 @@ export default function Home() {
 
       <section className="manifesto section-shell" aria-labelledby="manifesto-title">
         <div className="manifesto-heading">
-          <p className="eyebrow">THE HEBREW COURSE FOR STORY PEOPLE</p>
-          <h2 id="manifesto-title">A novel you don&apos;t just read. You live it.</h2>
+          <p className="eyebrow">HOW THE APP TEACHES HEBREW</p>
+          <h2 id="manifesto-title">A complete beginner Hebrew course, built into a story.</h2>
         </div>
         <p className="manifesto-copy">
-          You arrive in Israel as the protagonist. Every lesson moves the plot
-          forward through voiced dialogue, vocabulary, grammar, culture, and
-          speaking practice. The story pulls you back—not a streak.
+          Instead of memorizing disconnected phrases, you arrive in Israel as
+          the protagonist. Every chapter teaches practical vocabulary, grammar,
+          listening, pronunciation, and conversation through the next scene in
+          your life. The story pulls you back—not a streak.
         </p>
         <figure className="manifesto-art manifesto-art-gal">
           <img
@@ -153,14 +171,25 @@ export default function Home() {
         </div>
         <div className="journey-content section-shell">
           <div className="journey-heading">
-            <p className="eyebrow">YOUR YEAR IN ISRAEL</p>
-            <h2 id="journey-title">From new arrival to someone who belongs.</h2>
+            <p className="eyebrow">THE 36-LESSON HEBREW CURRICULUM</p>
+            <h2 id="journey-title">What you&apos;ll learn, chapter by chapter.</h2>
+            <p className="journey-intro">
+              Each chapter pairs a new part of life in Israel with the Modern
+              Hebrew you need to understand it, talk through it, and make it
+              your own.
+            </p>
           </div>
           <ol className="chapter-list">
-            {chapters.map(([number, title, body]) => (
+            {chapters.map(({ number, title, story, learning }) => (
               <li key={number}>
                 <span>{number}</span>
-                <div><h3>{title}</h3><p>{body}</p></div>
+                <div>
+                  <h3>{title}</h3>
+                  <p className="chapter-story">{story}</p>
+                  <p className="chapter-learning">
+                    <strong>Hebrew you&apos;ll learn:</strong> {learning}
+                  </p>
+                </div>
               </li>
             ))}
           </ol>
@@ -176,11 +205,12 @@ export default function Home() {
           />
         </div>
         <div className="download-copy">
-          <p className="eyebrow">YOUR STORY STARTS SOON</p>
-          <h2 id="download-title">Ready for your first chapter?</h2>
+          <p className="eyebrow">THE HEBREW LEARNING APP IS COMING SOON</p>
+          <h2 id="download-title">Ready to start speaking Hebrew?</h2>
           <p>
-            My Hebrew Story is preparing to launch on iPhone and Android.
-            Join the waitlist and we&apos;ll let you know the moment it&apos;s ready.
+            My Hebrew Story is a guided beginner Hebrew course for iPhone and
+            Android. Join the waitlist and we&apos;ll let you know when your first
+            chapter is ready.
           </p>
           <div className="store-row" aria-label="Planned app availability">
             <span className="store-badge"><small>Coming soon to the</small>App Store</span>

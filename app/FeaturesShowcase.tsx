@@ -6,14 +6,14 @@ const featurePanels = [
   {
     eyebrow: "GUIDED SPEAKING",
     title: "Know exactly what to say.",
-    body: "Step into guided scenes from real life—the café, the shuk, the clinic. Answer naturally and keep the conversation moving.",
+    body: "Listen to Hebrew in guided scenes from real life—the café, the shuk, the clinic. Understand the moment, answer aloud, and keep the conversation moving.",
     image: "/assets/feature-speak.jpg",
     alt: "Guided speaking scene in My Hebrew Story with a suggested response and microphone control",
   },
   {
     eyebrow: "KIND AI FEEDBACK",
     title: "Say it your way.",
-    body: "You don’t have to repeat a perfect script. If your meaning fits the moment, it counts—and your AI reviewer responds with patient, useful guidance that helps your Hebrew sound more natural.",
+    body: "Speak Hebrew without memorizing an exact script. If your meaning fits the moment, it counts—and your AI reviewer gives patient, useful guidance to help you sound more natural.",
     image: "/assets/feature-done-speak.jpg",
     alt: "Supportive AI feedback recognizing a natural Hebrew reply",
   },
@@ -97,8 +97,8 @@ export function FeaturesShowcase() {
   return (
     <section className="features" aria-labelledby="features-title">
       <div className="section-shell features-heading">
-        <p className="eyebrow">WHAT MAKES IT DIFFERENT</p>
-        <h2 id="features-title">Your story. Your Hebrew. Every step supported.</h2>
+        <p className="eyebrow">HOW YOU PRACTICE HEBREW</p>
+        <h2 id="features-title">Learn Hebrew in context—with support at every step.</h2>
       </div>
 
       <div className="features-stage section-shell">

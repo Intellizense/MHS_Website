@@ -644,6 +644,14 @@ h1 {
   gap: 100px;
 }
 
+.journey-intro {
+  max-width: 560px;
+  margin: 28px 0 0;
+  color: var(--charcoal);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
 .chapter-list {
   margin: 0;
   padding: 0;
@@ -676,6 +684,22 @@ h1 {
   color: var(--charcoal);
   font-size: 15px;
   line-height: 1.6;
+}
+
+.chapter-list .chapter-story {
+  margin-bottom: 10px;
+}
+
+.chapter-list .chapter-learning {
+  color: var(--navy);
+}
+
+.chapter-learning strong {
+  color: var(--terracotta);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
 .download {
