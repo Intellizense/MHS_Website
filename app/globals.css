@@ -152,17 +152,26 @@ nav button {
   cursor: pointer;
 }
 
-.nav-download {
-  padding: 12px 20px;
-  color: var(--paper);
-  background: var(--navy);
-  border-radius: 999px;
+.app-store-link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  line-height: 0;
+  transition: transform 180ms ease;
 }
 
-nav .nav-download:hover,
-nav .nav-download:focus-visible {
-  color: white;
+.app-store-link img {
+  width: auto;
+  height: 52px;
+}
+
+.app-store-link:hover,
+.app-store-link:focus-visible {
   transform: translateY(-2px);
+}
+
+.nav-app-store img {
+  height: 40px;
 }
 
 .hero {
@@ -779,6 +788,10 @@ h1 {
   letter-spacing: 0.04em;
 }
 
+.store-badge-coming {
+  opacity: 0.72;
+}
+
 .button-light {
   align-self: center;
   color: var(--paper);
@@ -980,10 +993,6 @@ h1 {
     font-size: 12px;
   }
 
-  .nav-download {
-    padding: 10px 14px;
-  }
-
   .hero {
     min-height: auto;
     padding: 70px 0 88px;
@@ -1004,11 +1013,11 @@ h1 {
     gap: 18px;
   }
 
-  .hero-actions .hero-store-status {
+  .hero-actions > .app-store-link {
     order: 0;
   }
 
-  .hero-actions > .button-primary {
+  .hero-actions .hero-store-status {
     order: 1;
   }
 

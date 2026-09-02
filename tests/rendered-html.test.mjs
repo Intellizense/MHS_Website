@@ -38,7 +38,16 @@ test("server-renders the finished My Hebrew Story landing page", async () => {
   assert.match(html, /dialogue, vocabulary, grammar, Israeli culture/);
   assert.match(html, /href="#home"[^>]*>Home<\/a>/);
   assert.match(html, />Contact<\/button>/);
-  assert.match(html, />Join Wait List<\/button>/);
+  assert.match(
+    html,
+    /href="https:\/\/apps\.apple\.com\/jp\/app\/my-hebrew-story\/id6794203306\?l=en-US"/,
+  );
+  assert.match(
+    html,
+    /https:\/\/developer\.apple\.com\/assets\/elements\/badges\/download-on-the-app-store\.svg/,
+  );
+  assert.match(html, /alt="Download on the App Store"/);
+  assert.doesNotMatch(html, />Download for iOS<\/a>/);
   assert.match(html, /https:\/\/tally\.so\/widgets\/embed\.js/);
   assert.match(
     html,
@@ -52,9 +61,11 @@ test("server-renders the finished My Hebrew Story landing page", async () => {
   assert.match(html, /gtag\('config', 'G-CGBSDC7EJK'/);
   assert.match(html, /allow_google_signals: false/);
   assert.match(html, /allow_ad_personalization_signals: false/);
-  assert.match(html, /Join the waitlist/);
+  assert.match(html, /NOW AVAILABLE ON THE APP STORE/);
+  assert.match(html, /Android · Coming soon/);
   assert.match(html, /Download on the/);
   assert.match(html, /Google Play/);
+  assert.doesNotMatch(html, /Coming soon to the<\/small>App Store/);
   assert.match(html, /proof-row-desktop/);
   assert.match(html, /proof-row-mobile/);
   assert.match(html, /\/assets\/gal-arrival\.jpg/);

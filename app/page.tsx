@@ -2,7 +2,10 @@ import { TallyPopupButton } from "./TallyPopupButton";
 import { FeaturesShowcase } from "./FeaturesShowcase";
 
 const INQUIRY_FORM_ID = "gDVB14";
-const WAITLIST_FORM_ID = "D4Opkj";
+const APP_STORE_URL =
+  "https://apps.apple.com/jp/app/my-hebrew-story/id6794203306?l=en-US";
+const APP_STORE_BADGE_URL =
+  "https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg";
 
 const courseStats = [
   ["36", "Hebrew lessons"],
@@ -20,6 +23,24 @@ function CourseProof({ className }: { className: string }) {
         </div>
       ))}
     </dl>
+  );
+}
+
+function AppStoreBadge({ className = "" }: { className?: string }) {
+  return (
+    <a
+      className={`app-store-link ${className}`.trim()}
+      href={APP_STORE_URL}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src={APP_STORE_BADGE_URL}
+        alt="Download on the App Store"
+        width="120"
+        height="40"
+      />
+    </a>
   );
 }
 
@@ -93,9 +114,7 @@ export default function Home() {
         <nav aria-label="Primary navigation">
           <a href="#home">Home</a>
           <TallyPopupButton formId={INQUIRY_FORM_ID}>Contact</TallyPopupButton>
-          <TallyPopupButton className="nav-download" formId={WAITLIST_FORM_ID}>
-            Join Wait List
-          </TallyPopupButton>
+          <AppStoreBadge className="nav-app-store" />
         </nav>
       </header>
 
@@ -109,16 +128,10 @@ export default function Home() {
             vocabulary, grammar, Israeli culture, and guided speaking practice.
           </p>
           <div className="hero-actions">
-            <TallyPopupButton className="button button-primary" formId={WAITLIST_FORM_ID}>
-              Join Wait List
-            </TallyPopupButton>
-            <div className="hero-store-status" aria-label="Coming soon to the App Store and Google Play">
-              <span className="coming-soon">Coming soon</span>
+            <AppStoreBadge />
+            <div className="hero-store-status" aria-label="Android app coming soon">
+              <span className="coming-soon">Android · Coming soon</span>
               <div className="hero-store-badges" aria-hidden="true">
-                <span className="hero-store-badge">
-                  <span className="store-mark apple-mark"></span>
-                  <span><small>Download on the</small>App Store</span>
-                </span>
                 <span className="hero-store-badge">
                   <span className="store-mark play-mark">▶</span>
                   <span><small>Get it on</small>Google Play</span>
@@ -205,20 +218,19 @@ export default function Home() {
           />
         </div>
         <div className="download-copy">
-          <p className="eyebrow">THE HEBREW LEARNING APP IS COMING SOON</p>
+          <p className="eyebrow">NOW AVAILABLE ON THE APP STORE</p>
           <h2 id="download-title">Ready to start speaking Hebrew?</h2>
           <p>
-            My Hebrew Story is a guided beginner Hebrew course for iPhone and
-            Android. Join the waitlist and we&apos;ll let you know when your first
-            chapter is ready.
+            My Hebrew Story is available now for iPhone. Download it from the
+            App Store and start your first chapter today. The Android version is
+            coming soon.
           </p>
-          <div className="store-row" aria-label="Planned app availability">
-            <span className="store-badge"><small>Coming soon to the</small>App Store</span>
-            <span className="store-badge"><small>Coming soon on</small>Google Play</span>
+          <div className="store-row" aria-label="App availability">
+            <AppStoreBadge />
+            <span className="store-badge store-badge-coming">
+              <small>Android · Coming soon on</small>Google Play
+            </span>
           </div>
-          <TallyPopupButton className="button button-light" formId={WAITLIST_FORM_ID}>
-            Join Wait List
-          </TallyPopupButton>
         </div>
       </section>
 
